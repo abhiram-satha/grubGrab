@@ -7,6 +7,6 @@ CREATE TABLE users (
   email VARCHAR(50) NOT NULL,
   phone_number INTEGER NOT NULL,
   billing_address_id INTEGER REFERENCES billing_addresses(id) ON DELETE CASCADE,
-  username VARCHAR(10) NOT NULL
+  username VARCHAR(25) NOT NULL
 );
 

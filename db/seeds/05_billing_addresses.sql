@@ -1,0 +1,2 @@
+INSERT INTO billing_addresses(street_address, unit_number, city, province, country, postal_code) VALUES ('999 Lighthouse Street', '333', 'Toronto', 'ON', 'CA', 'L1L0L0');
+INSERT INTO billing_addresses(street_address, unit_number, city, province, country, postal_code) VALUES ('123 Imaginary Avenue', NULL, 'Vancouver', 'ON', 'CA', 'A9A9A9');
