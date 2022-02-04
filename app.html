@@ -51,12 +51,16 @@
     </nav>
 
     <div class="orders">
-      <div>Cart Items</div>
-      <ul class="orders-list">
-        <li>Tacos</li>
-        <li>Munchies</li>
-        <li>Whats up</li>
-      </ul>
+      <h4>Cart Items</h4>
+      <table class="orders-list">
+        <tr>
+          <th class="cart-food-photo"></th>
+          <th class="cart-food-name">Item</th>
+          <th class="cart-food-quantity">Quantity</th>
+          <th class="cart-food-cost">Cost</th>
+          <th class="cart-food-remove">Remove</th>
+        </tr>
+      </table>
     </div>
 
     <header class="header">
@@ -107,7 +111,8 @@
       </section>
     </main>
 
-    <script src="/public/scripts/cart.js"></script>
+    <script src="public/scripts/cart.js"></script>
+    <script src="public/scripts/app.js"></script>
 
     <!-- Bootstrap JS
     <script
