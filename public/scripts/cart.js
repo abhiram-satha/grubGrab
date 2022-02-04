@@ -1,8 +1,8 @@
 $(document).ready(function () {
   //Show/Hide Cart Menu
   $(".cart").click(function () {
-    let $cartOrders = $(".orders");
-    let displayValue = $cartOrders.css("display");
+    const $cartOrders = $(".orders");
+    const displayValue = $cartOrders.css("display");
 
     if (displayValue === "none") {
       $cartOrders.slideDown();

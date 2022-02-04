@@ -21,7 +21,7 @@ nav {
 
 .cart {
   display: flex;
-  margin-right: 5%;
+  padding: 0 1em;
   justify-content: space-between;
 }
 
