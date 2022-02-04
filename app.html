@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="./styles/layout.css">
   <link rel="stylesheet" href="./styles/nav.css">
   <link rel="stylesheet" href="./styles/header.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -36,44 +38,18 @@
 
   <main class="container">
     <section class="food-type">
-      <div class="type-pick">Chicken</div>
-      <div class="type-pick">Beef</div>
-      <div class="type-pick">Pork</div>
-      <div class="type-pick">Fish</div>
-      <div class="type-pick">Seafood</div>
-      <div class="type-pick">Dessert</div>
-      <div class="type-pick">Drinks</div>
+      <div><button class="type-pick meat">Meat</button></div>
+      <div class="type-pick vegetarian">Vegetarian</div>
+      <div class="type-pick sides">Sides</div>
+      <div class="type-pick dessert">Dessert</div>
+      <div class="type-pick drinks">Drinks</div>
     </section>
 
-    <section class="food-card-holder">
-      <div class="food-card">
-        <section class="food-info">
-          <div>
-            <img class="image" src="https://www.bemindfulbehuman.com/wp-content/uploads/MG_9073.deep_.fried_.calamari.final1_1.png" alt="Crispy Calamari">
-          </div>
-          <div class="desc">
-            Crispy Calamari $14.99
-          </div>
-        </section>
-        <button>
-          Add to cart
-        </button>
-      </div>
+    <article id='meal-container'>
 
-      <div class="food-card">
-        <section class="food-info">
-          <div>
-            <img class="image" src="https://iheartumami.com/wp-content/uploads/2019/08/Whole30-Thai-Basil-Chicken-Paleo-Pad-Krapow-Gai-Easy-I-Heart-Umami-500x375.jpg" alt="Pad Ga Prow">
-          </div>
-          <div class="desc">
-            Pad Gra Prow - $14.99
-          </div>
-        </section >
-        <button>
-          Add to cart
-        </button>
-      </div>
-    </section>
+    </article>
   </main>
+
+  <script src="./public/scripts/menuItems.js"></script>
 </body>
 </html>
