@@ -48,8 +48,6 @@ $(document).ready(function () {
   //Load Cart Items
   const loadCartItems = function (cartItems) {
     for (const item in cartItems) {
-      console.log(cartItems);
-      console.log(cartItems[item]);
       let $newCartItem = $(createCartItem(cartItems[item]));
       $(".orders-list").append($newCartItem);
     }
