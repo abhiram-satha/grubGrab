@@ -56,6 +56,13 @@ $(document).ready(function () {
   };
 
   loadCartItems(cartItems);
+
+  //Remove cart item
+  $(".orders button").click(function () {
+    const $itemToBeRemoved = $(this).parents("tr");
+    $itemToBeRemoved.remove();
+  });
+
   //Show/Hide Cart Menu
   $(".cart").click(function () {
     const $cartOrders = $(".orders");
