@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Grub Grab</title>
 
     <!-- Skeleton Style Sheets -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" /> -->
+    <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
+    <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" />  -->
 
     <!-- Font Awesome Library -->
     <link
@@ -17,12 +16,15 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- GrubHub Style Sheets -->
-    <link rel="stylesheet" href="/CSS/cart.css" />
-    <link rel="stylesheet" href="/CSS/nav.css" />
-    <link rel="stylesheet" href="/CSS/header.css" />
-    <link rel="stylesheet" href="/CSS/ourlayout.css" />
+
+    <link rel="stylesheet" href="/styles/cart.css" />
+    <link rel="stylesheet" href="/styles/nav.css" />
+    <link rel="stylesheet" href="/styles/header.css" />
+    <link rel="stylesheet" href="/styles/ourlayout.css" />
+    <link rel="stylesheet" href="/styles/menuItems.css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -61,48 +63,44 @@
     <!-- Page-specific (main) content here -->
 
     <main class="container">
-      <section class="food-type">
-        <div class="type-pick">Chicken</div>
-        <div class="type-pick">Beef</div>
-        <div class="type-pick">Pork</div>
-        <div class="type-pick">Fish</div>
-        <div class="type-pick">Seafood</div>
-        <div class="type-pick">Dessert</div>
-        <div class="type-pick">Drinks</div>
+      <section class="food-type sticky-top">
+        <button class="type-pick meat">Meat</button>
+        <button class="type-pick vegetarian">Vegetarian</button>
+        <button class="type-pick sides">Sides</button>
+        <button class="type-pick desserts">Dessert</button>
+        <button class="type-pick drinks">Drinks</button>
       </section>
 
-      <section class="food-card-holder">
-        <div class="food-card">
-          <section class="food-info">
-            <div>
-              <img
-                class="image"
-                src="https://www.bemindfulbehuman.com/wp-content/uploads/MG_9073.deep_.fried_.calamari.final1_1.png"
-                alt="Crispy Calamari"
-              />
-            </div>
-            <div class="desc">Crispy Calamari $14.99</div>
-          </section>
-          <button>Add to cart</button>
-        </div>
-
-        <div class="food-card">
-          <section class="food-info">
-            <div>
-              <img
-                class="image"
-                src="https://iheartumami.com/wp-content/uploads/2019/08/Whole30-Thai-Basil-Chicken-Paleo-Pad-Krapow-Gai-Easy-I-Heart-Umami-500x375.jpg"
-                alt="Pad Ga Prow"
-              />
-            </div>
-            <div class="desc">Pad Gra Prow - $14.99</div>
-          </section>
-          <button>Add to cart</button>
-        </div>
-      </section>
+      <article id="meal-container">
+        <section class="food-card-holder">
+          <div class="food-card">
+            <section class="food-info">
+              <div>
+                <img
+                  class="menu-image"
+                  src="https://media.olivegarden.com/en_us/images/product/Chicken-Marsala-dvp-1180X730.jpg"
+                  alt="chicken"
+                />
+              </div>
+              <div class="menu-desc">
+                <div class="menu-key">
+                  <div class="menu-name">Crispy Calamari</div>
+                  <div class="menu-price">$12.99</div>
+                </div>
+                <div class="menu-ingredients">
+                  Boneless chicken breast, Thai Basil, Garlic, Chili Peppers,
+                  Eggs, Sea Salt, Fish Sauce, Osyter Sauce, Coconut Aminos
+                </div>
+              </div>
+            </section>
+            <button class="menu-button">Add to cart</button>
+          </div>
+        </section>
+      </article>
     </main>
 
     <!-- GrubHub JS Scripts -->
     <script type="text/javascript" src="/scripts/cart.js"></script>
+    <script type="text/javascript" src="/scripts/menuItems.js"></script>
   </body>
 </html>

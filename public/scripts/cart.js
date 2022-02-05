@@ -6,7 +6,6 @@ $(document).ready(function () {
 
     for (const item of cartArray) {
       if (cartObject[item.name]) {
-        console.log(cartObject[item.name]);
         cartObject[item.name]["quantity"] =
           cartObject[item.name]["quantity"] + 1;
       } else {
@@ -36,36 +35,33 @@ $(document).ready(function () {
     <td>${cartItem.name}</td>
     <td>${cartItem.quantity}</td>
     <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
-    <td><button>&#10006</button></td>
+    <td><form action="/deleteCart" method="POST">
+    <button type="submit">&#10006</button>
+    </form></td>
   </tr>`;
 
     return newCartItem;
   };
 
-  // ----- Cart Features ------
-  //Item counter
-  $("button").click(function () {
-    const $cart = $(".cart div");
-    let cartNumber = $cart[0]["innerText"];
-    cartNumber++;
-    $cart[0]["innerText"] = cartNumber;
-  });
+  //Register event handler
+  const registerEventHandler = function () {
+    //Remove cart item
+    $(".orders form").submit(function (event) {
+      const $itemToBeRemoved = $(this).parents("tr");
+      event.preventDefault();
+      $itemToBeRemoved.remove();
+    });
+  };
 
+  // ----- Cart Features ------
   //Load Cart Items
   const loadCartItems = function (cartItemsData) {
     const cartItems = createCartObject(cartItemsData);
-    console.log(cartItems);
     for (const item in cartItems) {
       let $newCartItem = $(createCartItem(cartItems[item]));
       $(".orders-list").append($newCartItem);
     }
   };
-
-  //Remove cart item
-  $(".orders button").click(function () {
-    const $itemToBeRemoved = $(this).parents("tr");
-    $itemToBeRemoved.remove();
-  });
 
   //Show/Hide Cart Menu
   $(".cart").click(function () {
@@ -84,6 +80,10 @@ $(document).ready(function () {
     url: "api/cart",
     data: "format.serialize()",
   }).then((res) => {
+    const $cart = $(".cart div");
+    let cartNumber = res["cart"].length;
+    $cart[0]["innerText"] = cartNumber;
     loadCartItems(res["cart"]);
+    registerEventHandler();
   });
 });
