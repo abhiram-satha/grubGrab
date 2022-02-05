@@ -35,7 +35,7 @@ $(document).ready(function () {
     </td>
     <td>${cartItem.name}</td>
     <td>${cartItem.quantity}</td>
-    <td>$${cartItem.price * cartItem.quantity}</td>
+    <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
     <td><button>&#10006</button></td>
   </tr>`;
 
