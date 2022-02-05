@@ -30,22 +30,24 @@ $(document).ready (function() {
       //   console.log($meatMenu);
       let menuItems = `
       <section class="food-card-holder">
-        <div class="food-card">
-          <section class="food-info">
-            <div>
-              <img class="image" src="${mealitem['image']}" alt="chicken">
+      <div class="food-card">
+        <section class="food-info">
+          <div>
+            <img class="menu-image" src="https://iheartumami.com/wp-content/uploads/2019/08/Whole30-Thai-Basil-Chicken-Paleo-Pad-Krapow-Gai-Easy-I-Heart-Umami-500x375.jpg" alt="chicken">
+          </div>
+          <div class="menu-desc">
+            <div class='menu-key'>
+              <div class='menu-name'>${mealitem['name']}</div>
+              <div class='menu-price'>${mealitem['price']}</div>
             </div>
-            <div class="desc">
-              Chicken Parmasen
-              $12.99
-              boneless chicken breast, eggs, parmesan cheese
-            </div>
-          </section>
-          <button>
-            Add to cart
-          </button>
-        </div>
-      </section>`;
+            <div class='menu-ingredients'>Boneless chicken breast, Thai Basil, Garlic, Chili Peppers, Eggs, Sea Salt, Fish Sauce, Osyter Sauce, Coconut Aminos</div>
+          </div>
+        </section>
+        <button class="menu-button">
+          Add to cart
+        </button>
+      </div>
+    </section>`
 
       let result = $('article').append(menuItems);
 

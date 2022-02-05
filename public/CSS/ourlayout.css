@@ -1,0 +1,35 @@
+
+body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  color: #545149;
+  background-color: #f4f1ec;
+
+  font-family: "Source Sans Pro", sans-serif;
+
+}
+
+main {
+  padding: 3%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #a681ef;
+}
+
+.food-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.menu-key {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

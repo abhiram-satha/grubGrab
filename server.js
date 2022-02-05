@@ -47,8 +47,24 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+const listFoodItems = function () {
+  console.log("hello");
+  return db
+    .query(
+      `
+        SELECT *
+        FROM delivery_addresses;
+        `
+    )
+    .then((res) => {
+      console.log(res.rows[0]);
+    })
+    .catch((err) => console.error("query error", err.stack));
+};
 
 app.get("/", (req, res) => {
+  listFoodItems();
+  console.log("hello");
   res.render("index");
 });
 
