@@ -37,34 +37,35 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const cartRoutes = require("./routes/cart");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/cart", cartRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-const listFoodItems = function () {
-  console.log("hello");
-  return db
-    .query(
-      `
-        SELECT *
-        FROM delivery_addresses;
-        `
-    )
-    .then((res) => {
-      console.log(res.rows[0]);
-    })
-    .catch((err) => console.error("query error", err.stack));
-};
+// const listFoodItems = function () {
+//   console.log("hello");
+//   return db
+//     .query(
+//       `
+//         SELECT *
+//         FROM delivery_addresses;
+//         `
+//     )
+//     .then((res) => {
+//       console.log(res.rows[0]);
+//     })
+//     .catch((err) => console.error("query error", err.stack));
+// };
 
 app.get("/", (req, res) => {
-  listFoodItems();
-  console.log("hello");
+  // Request("http://localhost:8080/api/cart").then((res) => console.log(res));
   res.render("index");
 });
 

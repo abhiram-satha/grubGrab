@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS cartitems CASCADE;
+
+CREATE TABLE cartitems (
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    menuitem_id INTEGER REFERENCES menuitems(id) ON DELETE CASCADE,
+    order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+    checkout BOOLEAN NOT NULL
+)
