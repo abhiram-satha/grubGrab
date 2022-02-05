@@ -2,11 +2,7 @@
 
 const createMeatMenu = function (mealitem) {
 
-
-
-  // console.log('hi')
 $("article").addClass('new-items')
-//   console.log($meatMenu);
 let menuItems = `
 <section class="food-card-holder">
 <div class="food-card">
@@ -38,7 +34,6 @@ return result;
 const renderMeals = (meals, number) => {
 const mealContainer = $('#meal-container').empty();
 for (const meal in meals) {
-  console.log('meal', meals[meal])
   if(meals[meal]['keyingredient_id'] === number)
    createMeatMenu(meals[meal]);
 }
@@ -55,7 +50,6 @@ for (const meal in meals) {
 
 $(document).ready (function() {
 
-  // console.log('pink', db)
 
   $('.meat').click(function(){
 
@@ -65,12 +59,7 @@ $(document).ready (function() {
       url: 'api/menuItems',
       data: 'format.serialize()',
     }).then((response) => {
-      console.log(response['menuitems'])
-          renderMeals(response['menuitems'], 1);
-
-
-
-
+        renderMeals(response['menuitems'], 1);
     });
   })
 
@@ -81,12 +70,7 @@ $(document).ready (function() {
       url: 'api/menuItems',
       data: 'format.serialize()',
     }).then((response) => {
-      console.log(response['menuitems'])
-          renderMeals(response['menuitems'], 2);
-
-
-
-
+      renderMeals(response['menuitems'], 2);
     });
 
   })
@@ -99,12 +83,7 @@ $(document).ready (function() {
       url: 'api/menuItems',
       data: 'format.serialize()',
     }).then((response) => {
-      console.log(response['menuitems'])
           renderMeals(response['menuitems'], 3);
-
-
-
-
     });
 
   })
@@ -116,7 +95,6 @@ $(document).ready (function() {
       url: 'api/menuItems',
       data: 'format.serialize()',
     }).then((response) => {
-      console.log(response['menuitems'])
           renderMeals(response['menuitems'], 4);
 
     });
@@ -131,12 +109,7 @@ $(document).ready (function() {
       url: 'api/menuItems',
       data: 'format.serialize()',
     }).then((response) => {
-      console.log(response['menuitems'])
-          renderMeals(response['menuitems'], 5);
-
-
-
-
+          renderMeals(response['menuitems'], 5)
     });
 
   })

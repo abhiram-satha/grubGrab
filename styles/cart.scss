@@ -1,3 +1,5 @@
+// See: https://sass-lang.com/
+
 .fa-shopping-cart {
   display: flex;
   margin: 0 1em;
@@ -14,12 +16,15 @@
   top: 120px;
   right: 10px;
   text-align: center;
+
+  h4 {
+    padding: 0;
+    margin: 0.75em;
+  }
+
 }
 
-.orders h4 {
-  padding: 0;
-  margin: 0.75em;
-}
+
 
 table {
   text-align: center;
@@ -27,6 +32,14 @@ table {
 
 td {
   height: 100px;
+
+  button {
+    color: white;
+    font-size: 1em;
+    background-color: transparent;
+    border: transparent;
+
+  }
 }
 
 .cart {
@@ -53,13 +66,6 @@ td {
 }
 .cart-food-remove {
   width: 50px;
-}
-
-td button {
-  color: white;
-  font-size: 1em;
-  background-color: transparent;
-  border: transparent;
 }
 
 .food-icon {
