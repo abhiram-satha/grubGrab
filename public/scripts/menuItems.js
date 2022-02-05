@@ -5,8 +5,25 @@ $(document).ready (function() {
 
   $('.meat').click(function(){
 
+    const meals = [
+      {
+        image: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.thechunkychef.com%2Fwp-content%2Fuploads%2F2016%2F04%2FEasy-Chicken-Marsala-9.jpg&f=1&nofb=1',
+        name: 'Chicken Parmasen',
+        price: 12.99,
+        description: 'boneless chicken breast, cayenne pepper, egg'
+      },
+      {
+        image: 'https://www.cookingclassy.com/wp-content/uploads/2013/02/chicken-parmesan-16.jpg',
+        name: 'Chicken Marsala',
+        price: 9.99,
+        description: 'boneless chicken breast, cayenne pepper, egg'
+      }
+    ]
+
     // alert('hello');
-      const createMeatMenu = function () {
+      const createMeatMenu = function (mealitem) {
+
+
 
         console.log('hi')
       $("article").addClass('new-items')
@@ -16,7 +33,7 @@ $(document).ready (function() {
         <div class="food-card">
           <section class="food-info">
             <div>
-              <img class="image" src="https://www.cookingclassy.com/wp-content/uploads/2013/02/chicken-parmesan-16.jpg" alt="chicken">
+              <img class="image" src="${mealitem['image']}" alt="chicken">
             </div>
             <div class="desc">
               Chicken Parmasen
@@ -35,25 +52,18 @@ $(document).ready (function() {
       return result;
     }
 
-    createMeatMenu();
 
-    // const renderMeals = (meals) => {
-    //   const mealContainer = $('#meal-container').empty();
 
-    //   for (const mealItem of meals) {
-    //     const mealInfo = {
-    //       image: mealItem.image,
-    //       name: mealItem.name,
-    //       price: mealItem.price,
-    //       description: mealItem.description
-    //     };
+    const renderMeals = (meal) => {
+      const mealContainer = $('#meal-container').empty();
 
-    //     const mealElement = createMeatMenu(mealInfo);
-    //     mealContainer.append(mealElement);
-    //   }
+      for (const mealItem of meal) {
 
-    // }
+        createMeatMenu(mealItem);
+      }
 
+    }
+    renderMeals(meals);
     // const loadTweets = () => db
     //   .query(`
     //       SELECT * FROM menuitems`)
