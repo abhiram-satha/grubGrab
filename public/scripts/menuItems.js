@@ -1,6 +1,6 @@
 // const { render } = require("ejs");
 
-const createMeatMenu = function (mealitem) {
+const createMealMenu = function (mealitem) {
 
 $("article").addClass('new-items')
 let menuItems = `
@@ -13,7 +13,7 @@ let menuItems = `
     <div class="menu-desc">
       <div class='menu-key'>
         <div class='menu-name'>${mealitem['name']}</div>
-        <div class='menu-price'>$${mealitem['price']}</div>
+        <div class='menu-price'>$${mealitem['price']/100}</div>
       </div>
       <div class='menu-ingredients'>${mealitem['ingredients']}</div>
     </div>
@@ -35,7 +35,7 @@ const renderMeals = (meals, number) => {
 const mealContainer = $('#meal-container').empty();
 for (const meal in meals) {
   if(meals[meal]['keyingredient_id'] === number)
-   createMeatMenu(meals[meal]);
+   createMealMenu(meals[meal]);
 }
 
 
