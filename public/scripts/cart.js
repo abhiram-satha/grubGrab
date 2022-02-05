@@ -17,7 +17,30 @@ $(document).ready(function () {
       quantity: 1,
     },
   };
-  //Helper Function
+  // ----- Helper Functions ------
+  //Create Cart Object
+  const createCartObject = function (cartArray) {
+    const cartObject = {};
+
+    for (const item of cartArray) {
+      if (cartObject[item.name]) {
+        console.log(cartObject[item.name]);
+        cartObject[item.name]["quantity"] =
+          cartObject[item.name]["quantity"] + 1;
+      } else {
+        cartObject[item.name] = {
+          name: item.name,
+          image: item.image,
+          price: item.price,
+          quantity: 1,
+        };
+      }
+    }
+
+    return cartObject;
+  };
+
+  //Create Cart Row
   const createCartItem = function (cartItem) {
     const newCartItem = `
     <tr>
@@ -30,12 +53,14 @@ $(document).ready(function () {
     </td>
     <td>${cartItem.name}</td>
     <td>${cartItem.quantity}</td>
-    <td>${cartItem.price * cartItem.quantity}</td>
+    <td>$${cartItem.price * cartItem.quantity}</td>
     <td><button>&#10006</button></td>
   </tr>`;
 
     return newCartItem;
   };
+
+  // ----- Cart Features ------
 
   //Item counter
   $("button").click(function () {
@@ -46,14 +71,37 @@ $(document).ready(function () {
   });
 
   //Load Cart Items
-  const loadCartItems = function (cartItems) {
+  const loadCartItems = function (cartItemsData) {
+    const cartItems = createCartObject(cartItemsData);
+    console.log(cartItems);
     for (const item in cartItems) {
       let $newCartItem = $(createCartItem(cartItems[item]));
       $(".orders-list").append($newCartItem);
     }
   };
 
-  loadCartItems(cartItems);
+  // export default loadCartItems;
+
+  loadCartItems([
+    {
+      name: "Nachos",
+      image:
+        "https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vd3d3LmF2ZXJpZWNvb2tzLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxOS8wMS9iZWVmbmFjaG9zLTUuanBnIiwiZXhwaXJlc19hdCI6MTYyMzA0MjIwNX0.ekevNVe2VrWfPZBME5M3qp-_bkQN24cOvABbE1dEOwQ/img.jpg?width=2000&height=2000",
+      price: 5,
+    },
+    {
+      name: "Fries",
+      image: "https://www.delonghi.com/Global/recipes/multifry/91.jpg",
+      price: 6,
+    },
+    {
+      name: "Fries",
+      image: "https://www.delonghi.com/Global/recipes/multifry/91.jpg",
+      price: 6,
+    },
+  ]);
+
+  // module.exports = { loadCartItems };
 
   //Remove cart item
   $(".orders button").click(function () {

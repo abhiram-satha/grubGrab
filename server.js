@@ -7,12 +7,16 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const request = require("request");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
+
+// Imported functions
+// const { loadCartItems } = require("./public/scripts/cart");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -65,7 +69,10 @@ app.use("/api/cart", cartRoutes(db));
 // };
 
 app.get("/", (req, res) => {
-  // Request("http://localhost:8080/api/cart").then((res) => console.log(res));
+  request("http://localhost:8080/api/cart", (error, response, body) => {
+    const currentCartItems = JSON.parse(body).cart;
+    // loadCartItems(currentCartItems);
+  });
   res.render("index");
 });
 
