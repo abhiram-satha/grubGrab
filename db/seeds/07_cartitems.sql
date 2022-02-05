@@ -8,3 +8,4 @@ INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, 4, 4
 INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, 5, NULL, FALSE);
 INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, 6, NULL, FALSE);
 INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, 6, NULL, FALSE);
+INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, 2, NULL, FALSE);

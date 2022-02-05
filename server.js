@@ -7,7 +7,6 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const request = require("request");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -53,26 +52,8 @@ app.use("/api/cart", cartRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-// const listFoodItems = function () {
-//   console.log("hello");
-//   return db
-//     .query(
-//       `
-//         SELECT *
-//         FROM delivery_addresses;
-//         `
-//     )
-//     .then((res) => {
-//       console.log(res.rows[0]);
-//     })
-//     .catch((err) => console.error("query error", err.stack));
-// };
 
 app.get("/", (req, res) => {
-  request("http://localhost:8080/api/cart", (error, response, body) => {
-    const currentCartItems = JSON.parse(body).cart;
-    // loadCartItems(currentCartItems);
-  });
   res.render("index");
 });
 
