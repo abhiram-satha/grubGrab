@@ -7,7 +7,7 @@ INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES
 INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (4, 'Lemon Loaf','butter, sugar, eggs, flour', 3.99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.seasonsandsuppers.ca%2Fwp-content%2Fuploads%2F2017%2F05%2Flemon-loaf800E-1170x780.jpg&f=1&nofb=1');
 INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (4, 'Cinnamon Rolls', 'milk, eggs, margarine, flour, white sugar, yeast', 4.99, 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F04%2F08%2FClone-of-a-Cinnabon-by-abrooks-2000.jpg&w=426&h=285&c=sc&poi=face&q=60');
 INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (5, 'Bottled Water', 'Spring Water', 1.99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-ice-water-bottle-aquafinabottle-water-drink-aquafina-9415246348499t1u0.png&f=1&nofb=1');
-INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (5,'Coca-Cola', NULL, 0.99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.scoopsofmalton.co.uk%2Fwp-content%2Fuploads%2F2020%2F05%2Fcoca-cola.jpg&f=1&nofb=1');
+INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (5, 'Coca-Cola', NULL, 0.99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.scoopsofmalton.co.uk%2Fwp-content%2Fuploads%2F2020%2F05%2Fcoca-cola.jpg&f=1&nofb=1');
 
 
 

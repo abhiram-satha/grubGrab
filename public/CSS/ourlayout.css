@@ -22,7 +22,7 @@ main {
 .food-type {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: space-between;
   padding-left: 5%;
   padding-right: 5%;
