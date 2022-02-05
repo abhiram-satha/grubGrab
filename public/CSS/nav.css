@@ -34,3 +34,19 @@ nav {
   display: flex;
   justify-content: space-around;
 }
+
+.food-type {
+  /* width: 120%; */
+  padding: 0;
+}
+
+button.type-pick {
+  width: -webkit-fill-available;
+  height: 50px;
+  border: none;
+}
+
+button.type-pick:hover {
+background-color: pink;
+border-color: #221244;
+}

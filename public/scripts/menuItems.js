@@ -141,7 +141,7 @@ let menuItems = `
     </div>
   </section>
   <button class="menu-button">
-    Add to cart
+    Add To Cart
   </button>
 </div>
 </section>`

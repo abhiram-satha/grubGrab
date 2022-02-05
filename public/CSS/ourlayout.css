@@ -24,8 +24,8 @@ main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
+  /* padding-left: 5%;
+  padding-right: 5%; */
 }
 
 .menu-key {
