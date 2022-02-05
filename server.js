@@ -14,6 +14,9 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+// Imported functions
+// const { loadCartItems } = require("./public/scripts/cart");
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -37,40 +40,22 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const cartRoutes = require("./routes/cart");
 const menuItemsRoutes = require("./routes/menuItems");
-
-
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/cart", cartRoutes(db));
 app.use("/api/menuItems", menuItemsRoutes(db));
-
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-// const listFoodItems = function () {
-//   console.log("hello");
-//   return db
-//     .query(
-//       `
-//         SELECT *
-//         FROM menuItems;
-//         `
-//     )
-//     .then((res) => {
-//       console.log(res.rows[0]);
-//     })
-//     .catch((err) => console.error("query error", err.stack));
-// };
-
 app.get("/", (req, res) => {
-  // listFoodItems();
-  console.log("hello");
   res.render("index");
 });
 
