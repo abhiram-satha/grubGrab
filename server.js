@@ -42,6 +42,8 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const cartRoutes = require("./routes/cart");
 const menuItemsRoutes = require("./routes/menuItems");
+const removeFromCartRoutes = require("./routes/addToCart");
+const addToCartRoutes = require("./routes/removeFromCart");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -49,6 +51,8 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/cart", cartRoutes(db));
 app.use("/api/menuItems", menuItemsRoutes(db));
+app.use("/api/addToCart", removeFromCartRoutes(db));
+app.use("/api/removeFromCart", addToCartRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
