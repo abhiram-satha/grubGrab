@@ -14,7 +14,6 @@ module.exports = (db) => {
     for (const id of req.body.listIDs) {
       query += `UPDATE cartitems SET checkout = 'TRUE', order_id = (SELECT MAX(id) FROM orders) WHERE id = ${id};`;
     }
-    console.log(query);
     db.query(query)
       .then((data) => {
         res.send("Successfully added to queue.");

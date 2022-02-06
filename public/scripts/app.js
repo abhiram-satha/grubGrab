@@ -110,9 +110,10 @@ $(document).ready(function () {
     }
   };
 
-  //Menu/Cart Feature -- Register event handler
-  const registerEventHandler = () => {
-    //Remove cart item
+  // ADDING EVENT HANDLERS
+
+  // Cart Feature - Add event handler for removing items from cart
+  const removeCartEventHandler = () => {
     $(".remove-item").click(function (event) {
       const $itemToBeRemoved = $(this).parents("tr");
       const $itemID = $(event.target).attr("data-value");
@@ -122,8 +123,10 @@ $(document).ready(function () {
       resetCart();
       setTimeout(renderCartItems, 500);
     });
+  };
 
-    //Add cart item
+  // Cart/Menu Feature - Add event handler for adding items to cart
+  const addCartEventHandler = () => {
     $(".menu-button").click((event) => {
       const $menuID = $(event.target).attr("data-value");
       resetCart();
@@ -131,8 +134,10 @@ $(document).ready(function () {
       currentCartQuantity();
       setTimeout(renderCartItems, 500);
     });
+  };
 
-    //Checkout item
+  // Cart Feature - Add event handler to checkout items from cart
+  const checkoutEventHandler = () => {
     $("#checkout").click((event) => {
       resetCart();
       $.ajax({
@@ -189,7 +194,8 @@ $(document).ready(function () {
     }).then((res) => {
       currentCartQuantity();
       loadCartItems(res["cart"]);
-      registerEventHandler();
+      removeCartEventHandler();
+      checkoutEventHandler();
     });
   };
 
@@ -201,7 +207,7 @@ $(document).ready(function () {
       data: "format.serialize()",
     }).then((response) => {
       renderMeals(response["menuitems"], 1);
-      registerEventHandler();
+      addCartEventHandler();
     });
   });
 
@@ -212,7 +218,7 @@ $(document).ready(function () {
       data: "format.serialize()",
     }).then((response) => {
       renderMeals(response["menuitems"], 2);
-      registerEventHandler();
+      addCartEventHandler();
     });
   });
 
@@ -223,7 +229,7 @@ $(document).ready(function () {
       data: "format.serialize()",
     }).then((response) => {
       renderMeals(response["menuitems"], 3);
-      registerEventHandler();
+      addCartEventHandler();
     });
   });
 
@@ -234,7 +240,7 @@ $(document).ready(function () {
       data: "format.serialize()",
     }).then((response) => {
       renderMeals(response["menuitems"], 4);
-      registerEventHandler();
+      addCartEventHandler();
     });
   });
 
@@ -245,7 +251,7 @@ $(document).ready(function () {
       data: "format.serialize()",
     }).then((response) => {
       renderMeals(response["menuitems"], 5);
-      registerEventHandler();
+      addCartEventHandler();
     });
   });
 
