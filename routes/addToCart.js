@@ -10,24 +10,10 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    let query = `DELETE FROM cartitems WHERE id`;
-    if (req.body.itemID.indexOf(",") !== -1) {
-      let idsToDelete = req.body.itemID.split(",");
-      for (const id of idsToDelete) {
-        if (idsToDelete.indexOf(id) === 0) {
-          query += ` in (${id},`;
-        } else if (idsToDelete.indexOf(id) === idsToDelete.length - 1) {
-          query += `${id});`;
-        } else {
-          query += `${id},`;
-        }
-      }
-    } else {
-      query += `= ${req.body.itemID};`;
-    }
+    let query = `INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, ${req.body.menuID}, NULL, FALSE);`;
     db.query(query)
       .then((data) => {
-        res.send("Successfully deleted.");
+        res.send("Successfully added to cart.");
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
