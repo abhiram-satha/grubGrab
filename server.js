@@ -65,6 +65,7 @@ app.get("/:id", (req, res) => {
   res.render("adminIndex");
 });
 
+
 app.get("/", (req, res) => {
   res.render("index");
 });

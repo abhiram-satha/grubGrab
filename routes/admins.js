@@ -14,7 +14,7 @@ module.exports = (db) => {
     FROM cartItems
     JOIN users ON cartitems.user_id = users.id
     JOIN menuitems ON cartitems.menuitem_id = menuitems.id
-    WHERE checkout = false AND user_id = 2
+    WHERE checkout = false
     `;
     console.log(query);
     db.query(query)
