@@ -1,7 +1,7 @@
 /*
  * All routes for removeFromCart are defined here
- * Since this file is loaded in server.js into api/cart,
- *   these routes are mounted onto /cart
+ * Since this file is loaded in server.js into api/removeFromCart,
+ *   these routes are mounted onto /removeFromCart
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 

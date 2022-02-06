@@ -58,8 +58,8 @@ $(document).ready(function () {
     });
   };
 
-  //Cart Feature -- Reset Cart
-  const resetCart = () => {
+  //Cart Feature -- Rebuild Cart
+  const rebuildCart = () => {
     $(".orders-list").replaceWith(`      
     <table class="orders-list">
     <tr>
@@ -120,7 +120,7 @@ $(document).ready(function () {
       $itemToBeRemoved.remove();
       $.post("/api/RemoveFromCart", { itemID: $itemID });
       currentCartQuantity();
-      resetCart();
+      rebuildCart();
       setTimeout(renderCartItems, 500);
     });
   };
@@ -129,7 +129,7 @@ $(document).ready(function () {
   const addCartEventHandler = () => {
     $(".menu-button").click((event) => {
       const $menuID = $(event.target).attr("data-value");
-      resetCart();
+      rebuildCart();
       $.post("/api/addToCart", { menuID: $menuID });
       currentCartQuantity();
       setTimeout(renderCartItems, 500);
@@ -139,7 +139,7 @@ $(document).ready(function () {
   // Cart Feature - Add event handler to checkout items from cart
   const checkoutEventHandler = () => {
     $("#checkout").click((event) => {
-      resetCart();
+      rebuildCart();
       $.ajax({
         type: "GET",
         url: "api/cart",
@@ -256,4 +256,14 @@ $(document).ready(function () {
   });
 
   renderCartItems();
+
+  //Test Code
+  $(".owner-reply").click((event) => {
+    const $ownerMessage = $(".owner-reply").siblings(".owner-message").val();
+    $(".owner-message").replaceWith(
+      `<textarea name="ownermessages" class="owner-message"></textarea>`
+    );
+    event.preventDefault();
+    $.post("/api/replyToCustomer", { ownerMessage: $ownerMessage });
+  });
 });
