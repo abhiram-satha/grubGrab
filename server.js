@@ -60,13 +60,19 @@ app.use("/api/admins", adminRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/:id", (req, res) => {
-  res.cookie('user_id', req.params.id)
+app.get("/3", (req, res) => {
+  res.cookie('user_id', 3)
   res.render("adminIndex");
 });
 
 
-app.get("/", (req, res) => {
+app.get("/2", (req, res) => {
+  res.cookie('user_id', 2)
+  res.render("index");
+});
+
+app.get("/1", (req, res) => {
+  res.cookie('user_id', 1)
   res.render("index");
 });
 

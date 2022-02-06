@@ -2,9 +2,7 @@
 
 const createMeatMenu = function (mealitem) {
 
-if (mealitem['last_name']) {
 
-}
 let menuItems =
 `
 <tr >
@@ -12,12 +10,20 @@ let menuItems =
           <th>Phone Number</th>
           <th >Order</th>
           <th>Time</th>
+          <th>Sent?</th>
         </tr>
 <tr class='customer-order order-row'>
   <td class='order-row'>${mealitem['last_name']}, ${mealitem['first_name']}</td>
   <td class='order-row'>${mealitem['phone_number']}</td>
-  <td class='order-row'>${mealitem['name']}</td>
- <td> <form action="/timesent" id="target"> <label for="fname">Time Til Pickup:</label><br> <input type="text" id="time" name="time"> <input class='button-click' type="submit" value="Submit"></form></td>
+
+  <td class='order-row'>${mealitem['cart_item']}</td>
+
+  <td> <form action="/timesent" id="target"> <label for="fname">Time Til Pickup:</label><br> <input type="text" id="time" name="time"> <input class='button-click' type="submit" value="Submit"></form></td>
+  <td class='hidden'>Text Delivered</td>
+
+ </tr>
+
+ <
 `
 
 let result = $('#order-container').append(menuItems);
@@ -28,15 +34,37 @@ return result;
 
 
 const renderMeals = (orders) => {
-const mealContainer = $('.customer-order').empty();
-for (const order in orders) {
-  createMeatMenu(orders[order])
+$('.customer-order').empty();
 
-  // console.log(orders[order]);
+let foodObject = {};
+
+
+for (const order in orders) {
+  if (!foodObject[orders[order]['user_id']]) {
+    foodObject[orders[order]['user_id']] = {
+      first_name: orders[order]['first_name'],
+      last_name: orders[order]['last_name'],
+      cart_item: [orders[order]['name']],
+      phone_number: orders[order]['phone_number']
+    }
+
+  } else {
+    foodObject[orders[order]['user_id']]['cart_item'].push(orders[order]['name'])
+  }
+
 }
+// console.log(foodObject);
+
+for (const object in foodObject) {
+  console.log(foodObject[object]);
+  createMeatMenu(foodObject[object])
+}
+
+
  let customerButton = ``
 
  let result = $('#order-container').append(customerButton)
+ registerEventHandler();
 }
 
 
@@ -51,20 +79,21 @@ $(document).ready (function() {
       renderMeals(response['admins'])
     });
 
-$('#target').on('submit', (e)=> {
-  e.preventDefault();
-  // e.stopPropagation();
-  const time = $(this).val();
-  console.log(time);
-  // $.ajax({ url: "/timesent", method: "POST", data: time }).then(() => {
-  //   console.log(time);
-  // });
+
 
 })
 
-})
+const registerEventHandler = () => {
+  $('#target').on('submit', (e)=> {
+    e.preventDefault();
+    const time = $(this).val();
+    console.log(time);
+    // $.ajax({ url: "/timesent", method: "POST", data: time }).then(() => {
+    //   console.log(time);
+    // });
 
-
+  })
+}
 
 
 

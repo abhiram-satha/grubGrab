@@ -32,7 +32,7 @@ return result;
 
 
 const renderMeals = (meals, number) => {
-const mealContainer = $('#meal-container').empty();
+$('#meal-container').empty();
 for (const meal in meals) {
   if(meals[meal]['keyingredient_id'] === number)
    createMealMenu(meals[meal]);
