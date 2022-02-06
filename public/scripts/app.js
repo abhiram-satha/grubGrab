@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   //---- Helper Functions -----
   //Cart Feature -- Create Cart Object
   const createCartObject = (cartArray) => {
@@ -37,7 +37,9 @@ $(document).ready(function() {
         <td>${cartItem.name}</td>
         <td>${cartItem.quantity}</td>
         <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
-        <td><button data-value="${cartItem.id}">&#10006</button></td>
+        <td><button class="remove-item" data-value="${
+          cartItem.id
+        }">&#10006</button></td>
       </tr>`;
 
     return newCartItem;
@@ -54,6 +56,20 @@ $(document).ready(function() {
       let cartNumber = res["cart"].length;
       $cart[0]["innerText"] = cartNumber;
     });
+  };
+
+  //Cart Feature -- Reset Cart
+  const resetCart = () => {
+    $(".orders-list").replaceWith(`      
+    <table class="orders-list">
+    <tr>
+      <th class="cart-food-photo"></th>
+      <th class="cart-food-name">Item</th>
+      <th class="cart-food-quantity">Quantity</th>
+      <th class="cart-food-cost">Cost</th>
+      <th class="cart-food-remove">Remove</th>
+    </tr>
+  </table>`);
   };
 
   // Menu Feature - Create Card
@@ -97,40 +113,39 @@ $(document).ready(function() {
   //Menu/Cart Feature -- Register event handler
   const registerEventHandler = () => {
     //Remove cart item
-    $(".orders button").click(function(event) {
+    $(".remove-item").click(function (event) {
       const $itemToBeRemoved = $(this).parents("tr");
       const $itemID = $(event.target).attr("data-value");
       $itemToBeRemoved.remove();
       $.post("/api/RemoveFromCart", { itemID: $itemID });
       currentCartQuantity();
-      $(".orders-list").replaceWith(`      
-      <table class="orders-list">
-      <tr>
-        <th class="cart-food-photo"></th>
-        <th class="cart-food-name">Item</th>
-        <th class="cart-food-quantity">Quantity</th>
-        <th class="cart-food-cost">Cost</th>
-        <th class="cart-food-remove">Remove</th>
-      </tr>
-    </table>`);
+      resetCart();
       setTimeout(renderCartItems, 500);
     });
 
     //Add cart item
     $(".menu-button").click((event) => {
       const $menuID = $(event.target).attr("data-value");
-      $(".orders-list").replaceWith(`      
-      <table class="orders-list">
-      <tr>
-        <th class="cart-food-photo"></th>
-        <th class="cart-food-name">Item</th>
-        <th class="cart-food-quantity">Quantity</th>
-        <th class="cart-food-cost">Cost</th>
-        <th class="cart-food-remove">Remove</th>
-      </tr>
-    </table>`);
+      resetCart();
       $.post("/api/addToCart", { menuID: $menuID });
       currentCartQuantity();
+      setTimeout(renderCartItems, 500);
+    });
+
+    //Checkout item
+    $("#checkout").click((event) => {
+      resetCart();
+      $.ajax({
+        type: "GET",
+        url: "api/cart",
+        data: "format.serialize()",
+      }).then((res) => {
+        const itemIDs = [];
+        for (const item in res.cart) {
+          itemIDs.push(res.cart[item].id);
+        }
+        $.post("/api/checkout", { listIDs: itemIDs });
+      });
       setTimeout(renderCartItems, 500);
     });
   };
@@ -150,7 +165,7 @@ $(document).ready(function() {
     <td></td>
     <td>Total</td>
     <td>$${totalCost / 100}</td>
-    <td></td>
+    <td><button id="checkout">Checkout</button></td>
   </tr>`);
   };
 
@@ -179,7 +194,7 @@ $(document).ready(function() {
   };
 
   //---- Menu Features -----
-  $(".meat").click(function() {
+  $(".meat").click(function () {
     $.ajax({
       type: "GET",
       url: "api/menuItems",
@@ -190,7 +205,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".vegetarian").click(function() {
+  $(".vegetarian").click(function () {
     $.ajax({
       type: "GET",
       url: "api/menuItems",
@@ -201,7 +216,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".sides").click(function() {
+  $(".sides").click(function () {
     $.ajax({
       type: "GET",
       url: "api/menuItems",
@@ -212,7 +227,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".desserts").click(function() {
+  $(".desserts").click(function () {
     $.ajax({
       type: "GET",
       url: "api/menuItems",
@@ -223,7 +238,7 @@ $(document).ready(function() {
     });
   });
 
-  $(".drinks").click(function() {
+  $(".drinks").click(function () {
     $.ajax({
       type: "GET",
       url: "api/menuItems",

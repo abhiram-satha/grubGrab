@@ -36,10 +36,16 @@ td {
     background-color: transparent;
     border: transparent;
   }
+
+  #checkout {
+    border: solid white 0.2em;
+    border-radius: 10%;
+  }
 }
 
 .cart {
   border: solid white 0.1em;
+  border-radius: 10%;
   padding: 1em;
   padding-right: 0;
   margin: 0.2em;
@@ -68,8 +74,12 @@ td {
   max-height: 100%;
 }
 
-td button:hover {
+.remove-item:hover {
   color: red;
+}
+
+#checkout:hover {
+  background-color: #b7b7a4;
 }
 
 .cart:hover {
