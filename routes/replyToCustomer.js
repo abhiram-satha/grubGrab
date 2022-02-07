@@ -6,7 +6,7 @@
  */
 
 const accountSid = "AC66d6669b64355fa48493f2865b157bba";
-const authToken = "a7be72920d3955857ff29d4541db2a76";
+const authToken = "0b1e63eab09c2c28fd1f751aa8515619";
 const client = require("twilio")(accountSid, authToken);
 const express = require("express");
 const router = express.Router();
@@ -14,6 +14,7 @@ const router = express.Router();
 module.exports = () => {
   router.post("/", (req, res) => {
     let message = req.body.ownerMessage;
+    console.log(message);
     client.messages
       .create({
         body: message,
