@@ -9,7 +9,7 @@ let menuItems =
           <th>Customer Name</th>
           <th>Phone Number</th>
           <th >Order</th>
-          <th>Time</th>
+          <th>Time Til Pickup:</th>
           <th>Sent?</th>
         </tr>
 <tr class='customer-order order-row'>
@@ -18,12 +18,11 @@ let menuItems =
 
   <td class='order-row'>${mealitem['cart_item']}</td>
 
-  <td> <form action="/timesent" id="target"> <label for="fname">Time Til Pickup:</label><br> <input type="text" id="time" name="time"> <input class='button-click' type="submit" value="Submit"></form></td>
-  <td class='hidden'>Text Delivered</td>
+  <td> <form action="/timesent" class="target"> <label for="fname"></label><br> <input type="text" id="time" name="time"> <input class='button-click' type="submit" value="Submit"></form></td>
+  <td class='hidden target'>Text Delivered</td>
 
  </tr>
 
- <
 `
 
 let result = $('#order-container').append(menuItems);
@@ -56,14 +55,13 @@ for (const order in orders) {
 // console.log(foodObject);
 
 for (const object in foodObject) {
-  console.log(foodObject[object]);
+  // console.log(foodObject[object]);
   createMeatMenu(foodObject[object])
 }
 
 
- let customerButton = ``
 
- let result = $('#order-container').append(customerButton)
+//  $('#order-container').append(customerButton)
  registerEventHandler();
 }
 
@@ -84,10 +82,14 @@ $(document).ready (function() {
 })
 
 const registerEventHandler = () => {
-  $('#target').on('submit', (e)=> {
+  $('.target').on('submit', (e)=> {
     e.preventDefault();
-    const time = $(this).val();
-    console.log(time);
+    $('td.hidden').removeClass('hidden');
+
+    // const time = $(this).val();
+    // console.log(time);
+
+
     // $.ajax({ url: "/timesent", method: "POST", data: time }).then(() => {
     //   console.log(time);
     // });
