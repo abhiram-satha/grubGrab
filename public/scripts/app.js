@@ -256,14 +256,4 @@ $(document).ready(function () {
   });
 
   renderCartItems();
-
-  //Test Code
-  $(".owner-reply").click((event) => {
-    const $ownerMessage = $(".owner-reply").siblings(".owner-message").val();
-    $(".owner-message").replaceWith(
-      `<textarea name="ownermessages" class="owner-message"></textarea>`
-    );
-    event.preventDefault();
-    $.post("/api/replyToCustomer", { ownerMessage: $ownerMessage });
-  });
 });

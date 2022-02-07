@@ -13,7 +13,7 @@ const router = express.Router();
 
 module.exports = () => {
   router.post("/", (req, res) => {
-    let message = req.body.ownerMessage;
+    let message = req.body.orderTime;
     console.log(message);
     client.messages
       .create({
