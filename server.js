@@ -68,8 +68,8 @@ app.use("/api/orderPickedUp", orderPickedUpRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  console.log(req.cookies);
-  res.render("index");
+  const templateVars = { user_id: req.cookies.user_id };
+  res.render("index", templateVars);
 });
 
 app.get("/1", (req, res) => {

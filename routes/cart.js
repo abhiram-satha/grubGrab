@@ -13,7 +13,7 @@ module.exports = (db) => {
     let query = `SELECT cartitems.id AS id, menuitems.name AS name, menuitems.image AS image, menuitems.price AS price
     FROM cartitems
     JOIN menuitems ON menuitems.id = menuitem_id
-    WHERE cartitems.checkout = 'f' AND user_id = 2
+    WHERE cartitems.checkout = 'f' AND user_id = ${req.cookies.user_id}
     ORDER BY id;`;
     db.query(query)
       .then((data) => {

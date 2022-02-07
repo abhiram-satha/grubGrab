@@ -10,8 +10,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    console.log(req.session);
-    let query = `INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (2, ${req.body.menuID}, NULL, FALSE);`;
+    let query = `INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (${req.body.userID}, ${req.body.menuID}, NULL, FALSE);`;
     db.query(query)
       .then((data) => {
         res.send("Successfully added to cart.");

@@ -14,7 +14,6 @@ const router = express.Router();
 module.exports = () => {
   router.post("/", (req, res) => {
     let message = req.body.orderTime;
-    console.log(message);
     client.messages
       .create({
         body: message,
@@ -22,9 +21,6 @@ module.exports = () => {
         to: "+16478239768",
       })
       .then((message) => console.log(message.sid));
-    // db.query(query)
-    //   .then((data) => {})
-    //   .catch((err) => {});
   });
   return router;
 };
