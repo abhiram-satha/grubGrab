@@ -1,28 +1,15 @@
-// const { render } = require("ejs");
-
 const createMeatMenu = function (mealitem) {
   let menuItems = `
-<tr >          
-          <th>Order Number</th>
-          <th>Customer Name</th>
-          <th>Phone Number</th>
-          <th >Order</th>
-          <th>Time till pickup</th>
-          <th>Order Picked Up</th>
-        </tr>
+
 <tr class='customer-order order-row'>
   <td class='order-row order-id'>${mealitem["order_id"]}</td>
   <td class='order-row'>${mealitem["last_name"]}, ${mealitem["first_name"]}</td>
   <td class='order-row'>${mealitem["phone_number"]}</td>
-
   <td class='order-row'>${mealitem["cart_item"]}</td>
-
   <td><input type="text" class="time" name="ownermessages" />
   <button class="owner-reply">Submit</button></td>
   <td><button class="picked-up">&#10006</button></td>
-
  </tr>
-
  <
 `;
 
@@ -31,8 +18,23 @@ const createMeatMenu = function (mealitem) {
   return result;
 };
 
+const noOrders = function () {
+  let menuItems = `
+
+<h3>Currently No Orders in the System</h3>
+`;
+
+  let result = $("#order-container").replaceWith(menuItems);
+
+  return result;
+};
+
 const renderMeals = (orders) => {
   $(".customer-order").empty();
+
+  if(Object.keys(orders).length === 0) {
+    noOrders();
+  } ;
 
   let foodObject = {};
 
@@ -50,17 +52,15 @@ const renderMeals = (orders) => {
       foodObject[orders[order]["id"]]["cart_item"].push(orders[order]["name"]);
     }
   }
-  console.log(foodObject);
+  // console.log(foodObject);
 
   for (const object in foodObject) {
     console.log(foodObject[object]);
     createMeatMenu(foodObject[object]);
   }
 
-  let customerButton = ``;
-
-  let result = $("#order-container").append(customerButton);
   registerEventHandler();
+  registerFulfillment();
 };
 
 $(document).ready(function () {
@@ -88,4 +88,14 @@ const registerEventHandler = () => {
     const $orderID = $(this).parents("td").siblings(".order-id")[0].innerText;
     $.post("/api/orderPickedUp", { orderID: $orderID });
   });
+
 };
+
+const registerFulfillment = () => {
+  $(".picked-up").click(function (event) {
+    const $removeOrder = $(this).parents('td').parents('tr')
+    $removeOrder.replaceWith()
+  })
+
+
+}
