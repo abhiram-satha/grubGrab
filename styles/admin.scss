@@ -1,3 +1,5 @@
+$primary-color: #1e1238;
+
 #flex-container {
   display: flex;
   justify-content: center;
@@ -6,15 +8,19 @@
 .order-container {
   height: 5px;
   width: 10%;
+}
 
-
+div.new-item {
+  margin: 5px 0;
 }
 
 table, th, td {
-  border: solid #1e1238 1px;
+  border: solid $primary-color 1px;
   color: black;
 }
-
+summary {
+  margin-bottom: 10px;
+}
 
 section {
   text-align: center;
@@ -22,7 +28,6 @@ section {
 
 main {
   background-color: #a681ef;
-
   margin-top: 100px;
 }
 
@@ -37,3 +42,24 @@ main {
 .owner-reply:hover {
   color: rgb(0, 132, 255);
 }
+
+details {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+details:hover {
+  color: $primary-color;
+}
+
+table.new-menu-table>td * {
+  border: none;
+
+}
+#new-form {
+  display: flex;
+  justify-content: center;
+}
+

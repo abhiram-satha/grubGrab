@@ -14,7 +14,7 @@ module.exports = (db) => {
     const menuItem = req.body;
     console.log(menuItem);
     const query = `INSERT INTO menuitems (name, keyingredient_id, ingredients, price, image)
-    VALUES ('${menuItem.name}', ${parseInt(menuItem.keyingredient_id)}, '${menuItem.ingredients}', ${parseInt(menuItem.price)}, '${menuItem.image}')`;
+    VALUES ('${menuItem.name}', ${menuItem.keyingredient_id}, '${menuItem.ingredients}', ${menuItem.price* 100}, '${menuItem.image}')`;
     console.log(query);
     db.query(query)
     .then((data) => {
