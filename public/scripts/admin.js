@@ -1,3 +1,5 @@
+// const { reservationsUrl } = require("twilio/lib/jwt/taskrouter/util");
+
 const createMeatMenu = function (mealitem) {
   let menuItems = `
 
@@ -17,6 +19,24 @@ const createMeatMenu = function (mealitem) {
 
   return result;
 };
+
+const createNewMenuItem = function () {
+
+
+  let newMenuForm = `
+  <label>Key Ingredient:</label> <input type="number" min="1" max="5" class="key-ingredient" name="key-ingredient"/>
+  <br>
+  <label>Menu Name:</label> <input type="text" maxlength="25" class="menu-name" name="menu-name" required/><br>
+  <label>Ingredients:</label> <input type="text" class="menu-ingredients" name="menu-ingredients" required/><br>
+  <label>Price:</label> <input type="number" class="menu-price" name="menu-price" required/><br>
+  <label>Image:</label> <input type="text" class="menu-image" name="menu-image" required/><br>
+  <button class="owner-menu">Submit</button>
+
+`
+  let result = $('#new-form').append(newMenuForm)
+
+  return result;
+}
 
 const noOrders = function () {
   let menuItems = `
@@ -55,10 +75,11 @@ const renderMeals = (orders) => {
   // console.log(foodObject);
 
   for (const object in foodObject) {
-    console.log(foodObject[object]);
+    // console.log(foodObject[object]);
     createMeatMenu(foodObject[object]);
   }
 
+  createNewMenuItem();
   registerEventHandler();
   registerFulfillment();
 };
@@ -89,6 +110,28 @@ const registerEventHandler = () => {
     $.post("/api/orderPickedUp", { orderID: $orderID });
   });
 
+  $('.owner-menu').click(function() {
+
+    // keyingredient_id, name, ingredients, price, image
+    const $menu_keyIngredient = $('.key-ingredient')[0].value;
+    const $menu_name = $('.menu-name')[0].value;
+    const $menu_ingredients = $('.menu-ingredients')[0].value;
+    const $menu_price = $('.menu-price')[0].value;
+    const $menu_image = $('.menu-image')[0].value;
+
+    $.post("/api/createNewMenuItem", {keyingredient_id: $menu_keyIngredient,
+      name: $menu_name,
+      ingredients: $menu_ingredients,
+      price: $menu_price,
+      image: $menu_image
+    })
+    $('.key-ingredient')[0].value = "";
+    $('.menu-name')[0].value = "";
+    $('.menu-ingredients')[0].value = "";
+    $('.menu-price')[0].value = "";
+    $('.menu-image')[0].value = "";
+  })
+
 };
 
 const registerFulfillment = () => {
@@ -99,3 +142,12 @@ const registerFulfillment = () => {
 
 
 }
+
+// const registerNewItem = () => {
+//   $(".owner-menu").click(function (event) {
+//     const $removeOrder = $(this).parents('td').parents('tr')
+//     $removeOrder.replaceWith()
+//   })
+
+
+// }

@@ -60,7 +60,7 @@ $(document).ready(function () {
 
   //Cart Feature -- Rebuild Cart
   const rebuildCart = () => {
-    $(".orders-list").replaceWith(`      
+    $(".orders-list").replaceWith(`
     <table class="orders-list">
     <tr>
       <th class="cart-food-photo"></th>
@@ -80,7 +80,7 @@ $(document).ready(function () {
   <div class="food-card">
     <section class="food-info">
       <div>
-        <img class="menu-image" src="${mealitem["image"]}" alt="chicken">
+        <img class="menu-image" src="${mealitem["image"]}" alt="${mealitem["name"]}">
       </div>
       <div class="menu-desc">
         <div class='menu-key'>

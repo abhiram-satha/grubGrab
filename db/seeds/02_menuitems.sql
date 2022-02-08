@@ -8,6 +8,6 @@ INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES
 INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (4, 'Cinnamon Rolls', 'milk, eggs, margarine, flour, white sugar, yeast', 499, 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F04%2F08%2FClone-of-a-Cinnabon-by-abrooks-2000.jpg&w=426&h=285&c=sc&poi=face&q=60');
 INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (5, 'Bottled Water', 'Spring Water', 199, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpurepng.com%2Fpublic%2Fuploads%2Flarge%2Fpurepng.com-ice-water-bottle-aquafinabottle-water-drink-aquafina-9415246348499t1u0.png&f=1&nofb=1');
 INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (5,'Coca-Cola', NULL, 99, 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.scoopsofmalton.co.uk%2Fwp-content%2Fuploads%2F2020%2F05%2Fcoca-cola.jpg&f=1&nofb=1');
-
+INSERT INTO menuitems (keyingredient_id, name, ingredients, price, image) VALUES (1, 'Baja Fish Tacos', 'Fish, All Purpose Flour, Mayonnaise, Green Cabbage, Onion, Jalapeno', 1099, 'https://iambaker.net/wp-content/uploads/2019/01/6H5A3813.tacos_-1.jpg')
 
 

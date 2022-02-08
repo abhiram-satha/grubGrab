@@ -47,6 +47,7 @@ const checkoutRoutes = require("./routes/checkout");
 const replyToCustomerRoutes = require("./routes/replyToCustomer");
 const adminRoutes = require("./routes/admins");
 const orderPickedUpRoutes = require("./routes/orderPickedUp");
+const createNewMenuItems = require("./routes/createNewMenuItem");
 // const loginUserOneRoute = require("./routes/userOne");
 
 // Mount all resource routes
@@ -60,6 +61,7 @@ app.use("/api/checkout", checkoutRoutes(db));
 app.use("/api/replyToCustomer", replyToCustomerRoutes());
 app.use("/api/admins", adminRoutes(db));
 app.use("/api/orderPickedUp", orderPickedUpRoutes(db));
+app.use("/api/createNewMenuItem", createNewMenuItems(db));
 // app.use("/userOne", loginUserOneRoute(db));
 // Note: mount other resources here, using the same pattern above
 
