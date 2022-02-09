@@ -68,7 +68,7 @@ $(document).ready(function () {
       <th class="cart-food-name">Item</th>
       <th class="cart-food-quantity">Quantity</th>
       <th class="cart-food-cost">Cost</th>
-      <th class="cart-update"><button>Update</button></th>
+      <th class="cart-update">Update</th>
       <th class="cart-food-remove">Remove</th>
     </tr>
   </table>`);
@@ -158,6 +158,15 @@ $(document).ready(function () {
       setTimeout(renderCartItems, 500);
     });
   };
+
+  // Cart Feature - Add event handler to update cart item button
+
+  const updateQuantityEventhandler = () =>{
+    $(".update-button").click(function(){
+      const $updateNumber = $(this).parents('td').siblings('td').children('.cart-quantity')
+      //grab 3 values: quantity#, cart item id, user_id
+    })
+    }
 
   //---- Cart Features -----
   //Load Cart Items
