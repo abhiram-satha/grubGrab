@@ -1,21 +1,21 @@
 // const { reservationsUrl } = require("twilio/lib/jwt/taskrouter/util");
 
-const createMeatMenu = function (mealitem) {
-  let menuItems = `
+const createPendingOrders = function (pendingOrder) {
+  let orderInformation = `
 
 <tr class='customer-order order-row'>
-  <td class='order-row order-id'>${mealitem["order_id"]}</td>
-  <td class='order-row'>${mealitem["last_name"]}, ${mealitem["first_name"]}</td>
-  <td class='order-row'>${mealitem["phone_number"]}</td>
-  <td class='order-row'>${mealitem["cart_item"]}</td>
+  <td class='order-row order-id'>${pendingOrder["order_id"]}</td>
+  <td class='order-row'>${pendingOrder["last_name"]}, ${pendingOrder["first_name"]}</td>
+  <td class='order-row'>${pendingOrder["phone_number"]}</td>
+  <td class='order-row'>${pendingOrder["cart_item"]}</td>
   <td><input type="text" class="time" name="ownermessages" />
   <button class="owner-reply">Submit</button></td>
   <td><button class="picked-up">&#10006</button></td>
  </tr>
- <
+
 `;
 
-  let result = $("#order-container").append(menuItems);
+  let result = $("#order-container").append(orderInformation);
 
   return result;
 };
@@ -69,7 +69,7 @@ const noOrders = function () {
   return result;
 };
 
-const renderMeals = (orders) => {
+const ordersToBeFulfilled = (orders) => {
   $(".customer-order").empty();
 
   if(Object.keys(orders).length === 0) {
@@ -92,11 +92,10 @@ const renderMeals = (orders) => {
       foodObject[orders[order]["id"]]["cart_item"].push(orders[order]["name"]);
     }
   }
-  // console.log(foodObject);
 
   for (const object in foodObject) {
-    // console.log(foodObject[object]);
-    createMeatMenu(foodObject[object]);
+
+    createPendingOrders(foodObject[object]);
   }
 
   createNewMenuItem();
@@ -110,8 +109,8 @@ $(document).ready(function () {
     url: "api/admins",
     data: "format.serialize()",
   }).then((response) => {
-    console.log(response['admins'])
-    renderMeals(response["admins"]);
+
+    ordersToBeFulfilled(response["admins"]);
   });
 });
 
@@ -132,19 +131,19 @@ const registerEventHandler = () => {
 
   $('.owner-menu').click(function() {
 
-    // keyingredient_id, name, ingredients, price, image
-    const $menu_keyIngredient = $('.key-ingredient')[0].value;
-    const $menu_name = $('.menu-name')[0].value;
-    const $menu_ingredients = $('.menu-ingredients')[0].value;
-    const $menu_price = $('.menu-price')[0].value;
-    const $menu_image = $('.menu-image')[0].value;
+    const keyingredient_id = $('.key-ingredient')[0].value;
+    const name = $('.menu-name')[0].value;
+    const ingredients = $('.menu-ingredients')[0].value;
+    const price = $('.menu-price')[0].value;
+    const image = $('.menu-image')[0].value;
 
+    //Not using $ as this is being pushed to the database
     $.post("/api/createNewMenuItem", {
-      keyingredient_id: $menu_keyIngredient,
-      name: $menu_name,
-      ingredients: $menu_ingredients,
-      price: $menu_price,
-      image: $menu_image
+      keyingredient_id,
+      name,
+      ingredients,
+      price,
+      image
     })
     $('.key-ingredient')[0].value = "";
     $('.menu-name')[0].value = "";
@@ -160,6 +159,5 @@ const registerFulfillment = () => {
     const $removeOrder = $(this).parents('td').parents('tr')
     $removeOrder.replaceWith()
   })
-
 
 }
