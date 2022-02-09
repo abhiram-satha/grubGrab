@@ -13,10 +13,11 @@ module.exports = (db) => {
 
     const menuItem = req.body;
     console.log(menuItem);
+    const values = [ menuItem.name, menuItem.keyingredient_id, menuItem.ingredients, menuItem.price * 100, menuItem.image]
     const query = `INSERT INTO menuitems (name, keyingredient_id, ingredients, price, image)
-    VALUES ('${menuItem.name}', ${menuItem.keyingredient_id}, '${menuItem.ingredients}', ${menuItem.price* 100}, '${menuItem.image}')`;
-    console.log(query);
-    db.query(query)
+    VALUES ($1, $2, $3, $4, $5)`;
+    console.log(query, values);
+    db.query(query, values)
     .then((data) => {
       res.send('Added')
     })
