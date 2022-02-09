@@ -35,7 +35,7 @@ $(document).ready(function () {
           />
         </td>
         <td>${cartItem.name}</td>
-        <td>${cartItem.quantity}</td>
+        <td><input type="number" class="cart-quantity" value="${cartItem.quantity}"></td>
         <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
         <td><button class="remove-item" data-value="${
           cartItem.id
@@ -60,7 +60,7 @@ $(document).ready(function () {
 
   //Cart Feature -- Rebuild Cart
   const rebuildCart = () => {
-    $(".orders-list").replaceWith(`      
+    $(".orders-list").replaceWith(`
     <table class="orders-list">
     <tr>
       <th class="cart-food-photo"></th>
