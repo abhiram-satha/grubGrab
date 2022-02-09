@@ -117,9 +117,9 @@ $(document).ready(function () {
     $(".remove-item").click(function (event) {
       const $itemToBeRemoved = $(this).parents("tr");
       const $itemID = $(event.target).attr("data-value");
+      const $userID = $("#current-user")[0].innerText;
       $itemToBeRemoved.remove();
-      $.post("/api/RemoveFromCart", { itemID: $itemID });
-      currentCartQuantity();
+      $.post("/api/RemoveFromCart", { itemID: $itemID, userID: $userID });
       rebuildCart();
       setTimeout(renderCartItems, 500);
     });
@@ -129,8 +129,9 @@ $(document).ready(function () {
   const addCartEventHandler = () => {
     $(".menu-button").click((event) => {
       const $menuID = $(event.target).attr("data-value");
+      const $userID = $("#current-user")[0].innerText;
       rebuildCart();
-      $.post("/api/addToCart", { menuID: $menuID });
+      $.post("/api/addToCart", { menuID: $menuID, userID: $userID });
       currentCartQuantity();
       setTimeout(renderCartItems, 500);
     });
@@ -146,10 +147,11 @@ $(document).ready(function () {
         data: "format.serialize()",
       }).then((res) => {
         const itemIDs = [];
+        const $userID = $("#current-user")[0].innerText;
         for (const item in res.cart) {
           itemIDs.push(res.cart[item].id);
         }
-        $.post("/api/checkout", { listIDs: itemIDs });
+        $.post("/api/checkout", { listIDs: itemIDs, userID: $userID });
       });
       setTimeout(renderCartItems, 500);
     });

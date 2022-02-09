@@ -10,7 +10,6 @@ const router = express.Router();
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
-    // console.log(req.body);
     let query = `UPDATE orders SET fulfilled = TRUE WHERE id = ${req.body.orderID}`;
     db.query(query)
       .then((data) => {})

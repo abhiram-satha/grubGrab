@@ -17,7 +17,6 @@ module.exports = (db) => {
     JOIN orders ON cartitems.order_id = orders.id
     WHERE orders.fulfilled = false;
     `;
-    console.log(query);
     db.query(query)
       .then((data) => {
         const admins = data.rows;
