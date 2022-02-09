@@ -37,6 +37,7 @@ $(document).ready(function () {
         <td>${cartItem.name}</td>
         <td><input type="number" class="cart-quantity" value="${cartItem.quantity}"></td>
         <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
+        <td><button class="update-button">Update</button></td>
         <td><button class="remove-item" data-value="${
           cartItem.id
         }">&#10006</button></td>
@@ -67,6 +68,7 @@ $(document).ready(function () {
       <th class="cart-food-name">Item</th>
       <th class="cart-food-quantity">Quantity</th>
       <th class="cart-food-cost">Cost</th>
+      <th class="cart-update"><button>Update</button></th>
       <th class="cart-food-remove">Remove</th>
     </tr>
   </table>`);
