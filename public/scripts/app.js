@@ -177,6 +177,10 @@ $(document).ready(function () {
         cartID,
         userID
       })
+
+      rebuildCart();
+      renderCartItems();
+
     })
     }
 
