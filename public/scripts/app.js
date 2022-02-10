@@ -1,4 +1,14 @@
 $(document).ready(function () {
+
+  $.ajax({
+    type: "GET",
+    url: "api/menuItems",
+    data: "format.serialize()",
+  }).then((response) => {
+    renderMeals(response["menuitems"]);
+    addCartEventHandler();
+  });
+
   //---- Helper Functions -----
   //Cart Feature -- Create Cart Object
   const createCartObject = (cartArray) => {
@@ -44,6 +54,8 @@ $(document).ready(function () {
 
     return newCartItem;
   };
+
+
 
   //Cart Feature -- Update current cart quantity
   const currentCartQuantity = () => {
@@ -102,12 +114,21 @@ $(document).ready(function () {
   };
 
   // Menu Feature - Render Meals
-  const renderMeals = (meals, number) => {
+  const renderMeals = (meals, number = 0) => {
     $("#meal-container").empty();
-    for (const meal in meals) {
-      if (meals[meal]["keyingredient_id"] === number)
-        createMealMenu(meals[meal]);
+    if (number > 0 ) {
+      for (const meal in meals) {
+        if (meals[meal]["keyingredient_id"] === number)
+          createMealMenu(meals[meal]);
+      }
     }
+  else {
+    for (const meal in meals) {
+      createMealMenu(meals[meal]);
+  }
+
+  }
+
   };
 
   // ADDING EVENT HANDLERS
