@@ -27,11 +27,11 @@ module.exports = (db) => {
       }
     } else {
       // let queryTemplate = `INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) VALUES (${userID}, (SELECT menuitem_id FROM cartitems WHERE id = ${cartID};), null, FALSE);`
-      let queryTemplate = `INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) SELECT user_id, menuitem_id, order_id, checkout FROM cartitems WHERE id = ${cartID}; `;
+      let queryTemplate = `INSERT INTO cartitems (user_id, menuitem_id, order_id, checkout) SELECT user_id, menuitem_id, order_id, checkout FROM cartitems WHERE id = ${cartID[0]}; `;
 
       const numToBeAdded = updateNumber - cartID.length;
 
-      for (let i = 0; i <= numToBeAdded; i++) {
+      for (let i = 0; i < numToBeAdded; i++) {
         query += queryTemplate;
       }
 

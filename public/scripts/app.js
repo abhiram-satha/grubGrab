@@ -172,13 +172,14 @@ $(document).ready(function () {
       }
       const userID = $("#current-user")[0].innerText;
 
+      rebuildCart();
+
       $.post("/api/updateCart", {
         updateNumber,
         cartID,
         userID
       })
 
-      rebuildCart();
       renderCartItems();
 
     })
