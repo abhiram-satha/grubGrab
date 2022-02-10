@@ -163,8 +163,12 @@ $(document).ready(function () {
 
   const updateQuantityEventhandler = () =>{
     $(".update-button").click(function(){
-      const $updateNumber = $(this).parents('td').siblings('td').children('.cart-quantity')
-      //grab 3 values: quantity#, cart item id, user_id
+      const $updateNumber = $(this).parents('td').siblings('td').children('.cart-quantity')[0].value;
+
+      const $cartID = $(this).parents('td').siblings('td').children('.remove-item').attr('data-value')
+
+      const $userID = $("#current-user")[0].innerText;
+      console.log($userID);
     })
     }
 
@@ -207,6 +211,7 @@ $(document).ready(function () {
     }).then((res) => {
       currentCartQuantity();
       loadCartItems(res["cart"]);
+      updateQuantityEventhandler ();
       removeCartEventHandler();
       checkoutEventHandler();
     });
