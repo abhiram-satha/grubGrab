@@ -45,8 +45,9 @@ $(document).ready(function () {
           />
         </td>
         <td>${cartItem.name}</td>
-        <td>${cartItem.quantity}</td>
+        <td><input type="number" class="cart-quantity" value="${cartItem.quantity}"></td>
         <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
+        <td><button class="update-button">Update</button></td>
         <td><button class="remove-item" data-value="${
           cartItem.id
         }">&#10006</button></td>
@@ -79,6 +80,7 @@ $(document).ready(function () {
       <th class="cart-food-name">Item</th>
       <th class="cart-food-quantity">Quantity</th>
       <th class="cart-food-cost">Cost</th>
+      <th class="cart-update">Update</th>
       <th class="cart-food-remove">Remove</th>
     </tr>
   </table>`);
@@ -178,6 +180,32 @@ $(document).ready(function () {
     });
   };
 
+  // Cart Feature - Add event handler to update cart item button
+
+  const updateQuantityEventhandler = () =>{
+    $(".update-button").click(function(){
+      const updateNumber = $(this).parents('td').siblings('td').children('.cart-quantity')[0].value;
+
+      let cartID = $(this).parents('td').siblings('td').children('.remove-item').attr('data-value')
+
+      if (cartID.indexOf(',') >= 0) {
+        cartID = cartID.split(',')
+      }
+      const userID = $("#current-user")[0].innerText;
+
+      rebuildCart();
+
+      $.post("/api/updateCart", {
+        updateNumber,
+        cartID,
+        userID
+      })
+
+      renderCartItems();
+
+    })
+    }
+
   //---- Cart Features -----
   //Load Cart Items
   const loadCartItems = (cartItemsData) => {
@@ -217,6 +245,7 @@ $(document).ready(function () {
     }).then((res) => {
       currentCartQuantity();
       loadCartItems(res["cart"]);
+      updateQuantityEventhandler ();
       removeCartEventHandler();
       checkoutEventHandler();
     });
