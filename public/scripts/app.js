@@ -82,7 +82,7 @@ $(document).ready(function () {
   <div class="food-card">
     <section class="food-info">
       <div>
-        <img class="menu-image" src="${mealitem["image"]}" alt="chicken">
+        <img class="menu-image" src="${mealitem["image"]}" alt="${mealitem["name"]}">
       </div>
       <div class="menu-desc">
         <div class='menu-key'>

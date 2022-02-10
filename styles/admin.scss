@@ -1,23 +1,65 @@
+$primary-color: #1e1238;
+
+#flex-container {
+  display: flex;
+  justify-content: center;
+}
+
 .order-container {
   height: 5px;
   width: 10%;
 }
 
-table, th, td {
-  border: solid black 1px;
+div.new-item {
+  margin: 5px 0;
 }
 
+table, th, td {
+  border: solid $primary-color 1px;
+  color: black;
+}
+summary {
+  margin-bottom: 10px;
+}
 
 section {
-  margin-top: 120px;
-
-
+  text-align: center;
 }
 
 main {
   background-color: #a681ef;
+  margin-top: 100px;
 }
 
 .hidden {
   display: none;
 }
+
+.picked-up:hover {
+  color: red;
+}
+
+.owner-reply:hover {
+  color: rgb(0, 132, 255);
+}
+
+details {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+details:hover {
+  color: $primary-color;
+}
+
+table.new-menu-table>td * {
+  border: none;
+
+}
+#new-form {
+  display: flex;
+  justify-content: center;
+}
+
