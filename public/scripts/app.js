@@ -163,12 +163,20 @@ $(document).ready(function () {
 
   const updateQuantityEventhandler = () =>{
     $(".update-button").click(function(){
-      const $updateNumber = $(this).parents('td').siblings('td').children('.cart-quantity')[0].value;
+      const updateNumber = $(this).parents('td').siblings('td').children('.cart-quantity')[0].value;
 
-      const $cartID = $(this).parents('td').siblings('td').children('.remove-item').attr('data-value')
+      let cartID = $(this).parents('td').siblings('td').children('.remove-item').attr('data-value')
 
-      const $userID = $("#current-user")[0].innerText;
-      console.log($userID);
+      if (cartID.indexOf(',') >= 0) {
+        cartID = cartID.split(',')
+      }
+      const userID = $("#current-user")[0].innerText;
+
+      $.post("/api/updateCart", {
+        updateNumber,
+        cartID,
+        userID
+      })
     })
     }
 

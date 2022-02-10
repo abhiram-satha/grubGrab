@@ -47,6 +47,8 @@ const checkoutRoutes = require("./routes/checkout");
 const replyToCustomerRoutes = require("./routes/replyToCustomer");
 const adminRoutes = require("./routes/admins");
 const orderPickedUpRoutes = require("./routes/orderPickedUp");
+const updateCartRoutes = require("./routes/updateCart");
+
 // const loginUserOneRoute = require("./routes/userOne");
 
 // Mount all resource routes
@@ -60,6 +62,7 @@ app.use("/api/checkout", checkoutRoutes(db));
 app.use("/api/replyToCustomer", replyToCustomerRoutes());
 app.use("/api/admins", adminRoutes(db));
 app.use("/api/orderPickedUp", orderPickedUpRoutes(db));
+app.use("/api/updateCart", updateCartRoutes(db));
 // app.use("/userOne", loginUserOneRoute(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -83,7 +86,12 @@ app.get("/2", (req, res) => {
 });
 
 app.get("/3", (req, res) => {
-  res.cookie("user_id", 3);
+  res.cookie("user_id", 3);/*
+  * All routes for addToCart are defined here
+  * Since this file is loaded in server.js into api/addToCart,
+  *   these routes are mounted onto /addToCart
+  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
+  */
   res.render("adminIndex");
 });
 
