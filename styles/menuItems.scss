@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 1em;
 }
 
 
@@ -45,6 +44,11 @@
   padding-left: 10%;
 }
 
+.food-info {
+  display: flex;
+  justify-content: space-around;
+}
+
 #meal-container {
   display: flex;
   justify-content: center;
@@ -52,17 +56,47 @@
 }
 
 .menu-name{
-  font-size: 1.2em;
   font-weight: bold;
 }
 
 .menu-ingredients {
-  font-size: .8em;
   font-style: italic;
 }
 
+.type-pick {
+  font-size: large;
+}
+
 @media (max-width: 748px) {
-  body {
-    font-size: 3em;
+
+  .menu-image {
+    height: 20em;
+    width: 100%;
+  }
+
+  .food-info {
+    display: block;
+  }
+
+  .food-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .menu-key {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+    margin: 1%;
   }
 }
+

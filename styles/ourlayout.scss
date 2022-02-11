@@ -7,7 +7,7 @@ body {
   color: #545149;
   background-color: #e2d8e3;
   font-family: "Source Sans Pro", sans-serif;
-
+  font-size: large;
 }
 
 main {
@@ -24,6 +24,7 @@ main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: space-between;
+  font-size: large;
 }
 
 .menu-key {
@@ -35,5 +36,17 @@ main {
 .fixed {
   position: fixed;
   width: 100%;
-  top: 10%;
+  top: 12%;
+}
+
+@media (max-width: 748px) {
+  body {
+    font-size: medium;
+  }
+
+  .fixed {
+    position: fixed;
+    width: 100%;
+    top: 12%;
+  }
 }
