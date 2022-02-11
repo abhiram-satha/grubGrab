@@ -10,6 +10,17 @@ body {
   font-size: large;
 }
 
+.menu-button {
+  background-color: #e2d8e3;
+  border-radius: 10%;
+  margin: 2%;
+}
+
+.menu-button:hover {
+  background-color: #a681ef;
+  color: antiquewhite;
+}
+
 main {
   padding: 3%;
   width: 100%;
