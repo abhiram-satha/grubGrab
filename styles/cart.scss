@@ -108,17 +108,21 @@ td {
   }
 
   .food-icon {
-    width: 5em;
-    height: 5em;
+    height: 3em;
+    width: 3em;
   }
 
   .cart-quantity {
-    width: 50%;
+    width: 33%;
     font-size: large;
   }
 
   .menu-ingredients {
     padding: 2%;
+  }
+
+  .update-button {
+    width: 80;
   }
 }
 

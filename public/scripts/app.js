@@ -48,7 +48,7 @@ $(document).ready(function () {
         <td><input type="number" class="cart-quantity" value="${cartItem.quantity}"></td>
         <td>$${(cartItem.price * cartItem.quantity) / 100}</td>
         <td><button class="update-button">Update</button></td>
-        <td><button class="remove-item" data-value="${
+        <td class="delete-wrap"><button class="remove-item" data-value="${
           cartItem.id
         }">&#10006</button></td>
       </tr>`;
