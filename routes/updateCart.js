@@ -6,10 +6,16 @@ module.exports = (db) => {
   router.post("/", (req, res) => {
     const updateNumber = req.body.updateNumber;
     const cartID = req.body.cartID;
-    const userID = req.body.userID;
-
+    const cartcheck = (cartID) => {
+      if (Array.isArray(cartID)) {
+        return cartID.length;
+      } else {
+        return 1
+      }
+    }
     let query = ``
-    if (cartID.length > updateNumber) {
+    if (cartcheck(cartID) > updateNumber) {
+
       query = `DELETE FROM cartitems WHERE id`
       const numToBeDeleted = cartID.length - updateNumber;
 
@@ -38,12 +44,10 @@ module.exports = (db) => {
       }
 
       for (let i = 0; i < numToBeAdded; i++) {
-        console.log("I like peaches")
         query += queryTemplate;
       }
 
     }
-    console.log(query);
     db.query(query)
       .then((data) => {
         res.send("Successfully Updated.");

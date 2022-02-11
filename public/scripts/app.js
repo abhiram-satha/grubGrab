@@ -191,14 +191,12 @@ $(document).ready(function () {
       if (cartID.indexOf(',') >= 0) {
         cartID = cartID.split(',')
       }
-      const userID = $("#current-user")[0].innerText;
 
       rebuildCart();
 
       $.post("/api/updateCart", {
         updateNumber,
         cartID,
-        userID
       })
 
       renderCartItems();
