@@ -31,3 +31,9 @@ main {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  top: 10%;
+}

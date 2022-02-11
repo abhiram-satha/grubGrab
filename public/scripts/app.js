@@ -306,4 +306,6 @@ $(document).ready(function () {
   });
 
   renderCartItems();
+
+
 });
