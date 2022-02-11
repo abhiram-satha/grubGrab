@@ -26,32 +26,72 @@ const createNewMenuItem = function () {
   let newMenuForm = `
 
   <table class="new-menu-table">
-  <tr>
-<th></th>
-<th></th>
-</tr>
-<tr>
-<td>
-  <label>Key Ingredient:</label>
-  </td>
-  <td>
-  <select class="key-ingredient" name='key-ingredient'>
-    <option value='1'>Meat</option>
-    <option value='2'>Vegetarian</option>
-    <option value='3'>Sides</option>
-    <option value='4'>Dessert</option>
-    <option value='5'>Drinks</option>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <label>Key Ingredient:</label>
+      </td>
+      <td>
+        <select class="key-ingredient" name='key-ingredient'>
+          <option value='1'>Meat</option>
+          <option value='2'>Vegetarian</option>
+          <option value='3'>Sides</option>
+          <option value='4'>Dessert</option>
+          <option value='5'>Drinks</option>
+        </select>
+      </td>
+    </tr>
 
-  </select>
-  </td>
-  </tr>
-
-  <div class="new-item"><tr><td><label>Menu Name: </label></td><td><input type="text" maxlength="25" class="menu-name field-long" name="menu-name" required/></td></tr></div>
-  <div class="new-item"><tr><td><label>Ingredients: </label></td><td><textarea type="text" class="menu-ingredients" name="menu-ingredients" required/></td></tr></div>
-  <div class="new-item"><tr><td><label>Price: </label></td><td><input type="number" class="menu-price" name="menu-price" required/></td></tr></div>
-  <div class="new-item"><tr><td><label>Image: </label></td><td><input type="text" class="menu-image" name="menu-image" required/></td></tr></div>
-  <div class="new-item owner-menu-submit"><tr><td><button class="owner-menu">Submit</button></tr></td></div>
-</table>
+    <div class="new-item">
+      <tr>
+        <td>
+          <label>Menu Name: </label>
+        </td>
+        <td>
+          <input type="text" maxlength="25" class="menu-name field-long" name="menu-name" required/>
+        </td>
+      </tr>
+    </div>
+    <div class="new-item">
+      <tr>
+        <td>
+          <label>Ingredients: </label>
+        </td>
+        <td>
+          <textarea type="text" class="menu-ingredients" name="menu-ingredients" required/>
+        </td>
+      </tr>
+    </div>
+    <div class="new-item">
+      <tr>
+        <td>
+          <label>Price: </label>
+        </td>
+        <td>
+          <input type="number" class="menu-price" name="menu-price" required/>
+        </td>
+      </tr>
+    </div>
+    <div class="new-item">
+      <tr>
+        <td>
+          <label>Image: </label>
+        </td>
+        <td>
+          <input type="text" class="menu-image" name="menu-image" required/>
+        </td>
+      </tr>
+    </div>
+    <div class="new-item owner-menu-submit">
+      <tr>
+        <td><button class="owner-menu">Submit</button>
+        </td>
+      </tr>
+    </div>
+  </table>
 `
   let result = $('#new-form').append(newMenuForm)
 
