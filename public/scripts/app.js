@@ -36,7 +36,7 @@ $(document).ready(function () {
   //Cart Feature -- Create Cart Row
   const createCartItem = (cartItem) => {
     const newCartItem = `
-        <tr>
+        <tr class="cart-container">
         <td>
           <img
             class="food-icon"

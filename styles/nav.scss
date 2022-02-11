@@ -29,11 +29,6 @@ nav {
   justify-content: space-between;
 }
 
-.food-info {
-  display: flex;
-  justify-content: space-around;
-}
-
 .food-type {
   padding: 0;
 }
@@ -45,6 +40,7 @@ button.type-pick {
 }
 
 button.type-pick:hover {
-  background-color: pink;
+  background-color: #a681ef;
+  color: antiquewhite;
   border-color: #221244;
 }

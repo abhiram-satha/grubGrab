@@ -83,9 +83,40 @@ td {
 }
 
 #checkout:hover {
-  background-color: #b7b7a4;
+  background-color: #a681ef;
 }
 
 .cart:hover {
   color: black;
+}
+
+.update-button {
+  border: whitesmoke .1em solid;
+  border-radius: 10%;
+}
+
+.update-button:hover {
+  background-color: #a681ef;
+}
+
+@media (max-width: 748px) {
+  .orders {
+    width: 100%;
+    right: 0;
+    font-size: large;
+  }
+
+  .food-icon {
+    height: 100%;
+    width: auto;
+  }
+
+  .cart-quantity {
+    width: 25%;
+    font-size: large;
+  }
+
+  .menu-ingredients {
+    padding: 2%;
+  }
 }
