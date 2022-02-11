@@ -61,3 +61,8 @@
   font-style: italic;
 }
 
+@media (max-width: 748px) {
+  body {
+    font-size: 3em;
+  }
+}
