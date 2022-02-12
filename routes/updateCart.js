@@ -8,6 +8,9 @@ module.exports = (db) => {
     const cartID = req.body.cartID;
     const userID = req.body.userID;
 
+    console.log(updateNumber);
+    console.log(cartID);
+
     let query = ``
     if (cartID.length > updateNumber) {
       query = `DELETE FROM cartitems WHERE id`
