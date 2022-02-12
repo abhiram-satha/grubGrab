@@ -38,7 +38,6 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
 const cartRoutes = require("./routes/cart");
 const menuItemsRoutes = require("./routes/menuItems");
 const removeFromCartRoutes = require("./routes/addToCart");
@@ -49,11 +48,9 @@ const adminRoutes = require("./routes/admins");
 const orderPickedUpRoutes = require("./routes/orderPickedUp");
 const updateCartRoutes = require("./routes/updateCart");
 const createNewMenuItems = require("./routes/createNewMenuItem");
-// const loginUserOneRoute = require("./routes/userOne");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
 app.use("/api/cart", cartRoutes(db));
 app.use("/api/menuItems", menuItemsRoutes(db));
 app.use("/api/addToCart", removeFromCartRoutes(db));
@@ -64,7 +61,6 @@ app.use("/api/admins", adminRoutes(db));
 app.use("/api/orderPickedUp", orderPickedUpRoutes(db));
 app.use("/api/updateCart", updateCartRoutes(db));
 app.use("/api/createNewMenuItem", createNewMenuItems(db));
-// app.use("/userOne", loginUserOneRoute(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -87,12 +83,13 @@ app.get("/2", (req, res) => {
 });
 
 app.get("/3", (req, res) => {
-  res.cookie("user_id", 3);/*
-  * All routes for addToCart are defined here
-  * Since this file is loaded in server.js into api/addToCart,
-  *   these routes are mounted onto /addToCart
-  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
-  */
+  res.cookie("user_id", 3);
+  /*
+   * All routes for addToCart are defined here
+   * Since this file is loaded in server.js into api/addToCart,
+   *   these routes are mounted onto /addToCart
+   * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
+   */
   res.render("adminIndex");
 });
 
